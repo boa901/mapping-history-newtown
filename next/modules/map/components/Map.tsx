@@ -4,7 +4,6 @@ import L from 'leaflet';
 import { MapContainer, TileLayer } from 'react-leaflet';
 
 export default function Map() {
-
   const bounds = new L.LatLngBounds(
     new L.LatLng(38.40087424, -78.91065653),
     new L.LatLng(38.49355771, -78.82668815),

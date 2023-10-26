@@ -1,13 +1,31 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
 import L from 'leaflet';
-import { MapContainer, TileLayer } from 'react-leaflet';
+import { MapContainer, Marker, TileLayer } from 'react-leaflet';
+
+import MarkerData from '@/modules/map/types/MarkerData';
 
 export default function Map() {
+  const [markers, setMarkers] = useState<MarkerData[] | null>();
+
   const bounds = new L.LatLngBounds(
     new L.LatLng(38.40087424, -78.91065653),
     new L.LatLng(38.49355771, -78.82668815),
   );
+
+  useEffect(() => {
+    const fetchMarkers = async () => {
+      const { data: markerData } = await fetch('/api/houses', {
+        method: 'GET',
+      }).then((res) => res.json());
+
+      setMarkers(markerData);
+    };
+
+    fetchMarkers();
+  }, []);
 
   return (
     <MapContainer
@@ -26,6 +44,9 @@ export default function Map() {
         url="http://localhost:3000/tiles/{z}/{x}/{y}.png"
         maxZoom={20}
       />
+      {markers?.map((marker) => (
+        <Marker position={new L.LatLng(marker.latitude, marker.longitude)} />
+      ))}
     </MapContainer>
   );
 };

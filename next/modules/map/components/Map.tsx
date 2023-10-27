@@ -45,7 +45,10 @@ export default function Map() {
         maxZoom={20}
       />
       {markers?.map((marker) => (
-        <Marker position={new L.LatLng(marker.latitude, marker.longitude)} />
+        <Marker
+          position={new L.LatLng(marker.latitude, marker.longitude)}
+          key={`${marker.street_no} ${marker.street_name}`}
+        />
       ))}
     </MapContainer>
   );

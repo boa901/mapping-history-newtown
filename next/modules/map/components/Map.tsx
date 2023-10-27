@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import L from 'leaflet';
 import { MapContainer, Marker, TileLayer } from 'react-leaflet';
 
+import HousePopup from '@/modules/map/components/HousePopup';
+
 import MarkerData from '@/modules/map/types/MarkerData';
 
 export default function Map() {
@@ -48,7 +50,12 @@ export default function Map() {
         <Marker
           position={new L.LatLng(marker.latitude, marker.longitude)}
           key={`${marker.street_no} ${marker.street_name}`}
-        />
+        >
+          <HousePopup
+            streetNumber={marker.street_no}
+            streetName={marker.street_name}
+          />
+        </Marker>
       ))}
     </MapContainer>
   );

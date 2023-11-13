@@ -41,7 +41,7 @@ export default function Map() {
         maxZoom={19}
       />
       <TileLayer
-        url="http://localhost:3000/tiles/{z}/{x}/{y}.png"
+        url="/tiles/{z}/{x}/{y}.png"
         maxZoom={20}
       />
       {markers?.map((marker) => (

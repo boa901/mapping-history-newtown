@@ -8,7 +8,7 @@ import HouseholdView from '@/modules/common/components/HouseholdView';
 const Map = dynamic(() => import('@/modules/map/components/Map'), { ssr: false });
 
 export default function Home() {
-  const [selectedHouse, setSelectedHouse] = useState<{street_no: string, street_name: string}>();
+  const [selectedHouse, setSelectedHouse] = useState<{street_no: string, street_name: string} | null>();
 
   return (
     <>

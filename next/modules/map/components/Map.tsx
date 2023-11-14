@@ -15,7 +15,7 @@ export default function Map({
   select?: React.Dispatch<React.SetStateAction<{
     street_no: string,
     street_name: string,
-  } | undefined>>
+  } | null | undefined>>
 }) {
   const [markers, setMarkers] = useState<MarkerData[] | null>();
 
@@ -65,6 +65,11 @@ export default function Map({
           key={`${marker.street_no} ${marker.street_name}`}
           eventHandlers={{
             click: () => handleMarkerClick(marker.street_no, marker.street_name),
+            popupclose: () => {
+              if (select) {
+                select(null);
+              }
+            }
           }}
         >
           <HousePopup

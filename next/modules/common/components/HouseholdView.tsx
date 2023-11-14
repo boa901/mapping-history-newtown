@@ -10,7 +10,7 @@ export default function HouseholdView({
   house: {
     street_no: string,
     street_name: string,
-  } | undefined
+  } | null | undefined
 }) {
   const [residents, setResidents] = useState<Resident[]>();
 
@@ -22,6 +22,8 @@ export default function HouseholdView({
           .then((res) => res.json());
 
         setResidents(results);
+      } else {
+        setResidents([]);
       }
     };
 

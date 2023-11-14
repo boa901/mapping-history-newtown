@@ -1,3 +1,12 @@
 .leaflet-container {
-  height: 800px;
+  height: 600px;
+  width: 800px;
+}
+
+.data-panel {
+  display: block;
+}
+
+.map-data-panel-view {
+  display: flex;
 }

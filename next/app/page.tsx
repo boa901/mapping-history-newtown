@@ -11,9 +11,9 @@ export default function Home() {
   const [selectedHouse, setSelectedHouse] = useState<{street_no: string, street_name: string} | null>();
 
   return (
-    <>
+    <div className="map-data-panel-view">
       <Map select={setSelectedHouse} />
       <HouseholdView house={selectedHouse} />
-    </>
+    </div>
   );
 }

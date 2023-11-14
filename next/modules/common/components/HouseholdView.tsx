@@ -31,29 +31,31 @@ export default function HouseholdView({
   }, [house]);
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Sex</th>
-          <th>Profession</th>
-          <th>Marital Status</th>
-          <th>Relationship</th>
-          <th>Birth Year</th>
-        </tr>
-      </thead>
-      <tbody>
-        {residents?.map((resident) => (
+    <div className="data-panel">
+      <table>
+        <thead>
           <tr>
-            <td>{resident.name}</td>
-            <td>{resident.sex}</td>
-            <td>{resident.profession}</td>
-            <td>{resident.marital_status}</td>
-            <td>{resident.relationship}</td>
-            <td>{resident.birth_year}</td>
+            <th>Name</th>
+            <th>Sex</th>
+            <th>Profession</th>
+            <th>Marital Status</th>
+            <th>Relationship</th>
+            <th>Birth Year</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {residents?.map((resident) => (
+            <tr>
+              <td>{resident.name}</td>
+              <td>{resident.sex}</td>
+              <td>{resident.profession}</td>
+              <td>{resident.marital_status}</td>
+              <td>{resident.relationship}</td>
+              <td>{resident.birth_year}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }

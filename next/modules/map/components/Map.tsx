@@ -9,13 +9,26 @@ import HousePopup from '@/modules/map/components/HousePopup';
 
 import MarkerData from '@/modules/map/types/MarkerData';
 
-export default function Map() {
+export default function Map({
+  select,
+}: {
+  select?: React.Dispatch<React.SetStateAction<{
+    street_no: string,
+    street_name: string,
+  } | undefined>>
+}) {
   const [markers, setMarkers] = useState<MarkerData[] | null>();
 
   const bounds = new L.LatLngBounds(
     new L.LatLng(38.40087424, -78.91065653),
     new L.LatLng(38.49355771, -78.82668815),
   );
+
+  const handleMarkerClick = (street_no: string, street_name: string) => {
+    if (select) {
+      select({ street_no, street_name });
+    }
+  };
 
   useEffect(() => {
     const fetchMarkers = async () => {
@@ -50,6 +63,9 @@ export default function Map() {
         <Marker
           position={new L.LatLng(marker.latitude, marker.longitude)}
           key={`${marker.street_no} ${marker.street_name}`}
+          eventHandlers={{
+            click: () => handleMarkerClick(marker.street_no, marker.street_name),
+          }}
         >
           <HousePopup
             streetNumber={marker.street_no}

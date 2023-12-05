@@ -11,11 +11,13 @@ import MarkerData from '@/modules/map/types/MarkerData';
 
 export default function Map({
   select,
+  opacity,
 }: {
   select?: React.Dispatch<React.SetStateAction<{
     street_no: string,
     street_name: string,
-  } | null | undefined>>
+  } | null | undefined>>,
+  opacity: number,
 }) {
   const [markers, setMarkers] = useState<MarkerData[] | null>();
 
@@ -58,6 +60,7 @@ export default function Map({
       <TileLayer
         url="/tiles/{z}/{x}/{y}.png"
         maxZoom={20}
+        opacity={opacity}
       />
       {markers?.map((marker) => (
         <Marker
@@ -80,4 +83,4 @@ export default function Map({
       ))}
     </MapContainer>
   );
-};
+}

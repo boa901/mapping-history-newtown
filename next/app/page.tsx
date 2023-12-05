@@ -15,6 +15,7 @@ export default function Home() {
     street_name: string,
   } | null>();
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
+  const [opacity, setOpacity] = useState<number>(100);
 
   useEffect(() => {
     if (!selectedHouse) {
@@ -31,7 +32,7 @@ export default function Home() {
         <div className="flex-grow">
           <div className="w-full h-full flex flex-col">
             <div className="flex-grow">
-              <Map select={setSelectedHouse} />
+              <Map select={setSelectedHouse} opacity={opacity} />
             </div>
             <div className="flex flex-row justify-between items-center bg-gray-200/50 border p-2">
               <div>
@@ -49,7 +50,7 @@ export default function Home() {
               </div>
               <div className="flex flex-row">
                 <h1 className="mr-2">Opacity:</h1>
-                <RangeSlider />
+                <RangeSlider defaultValue={100} onChange={(e) => setOpacity(JSON.parse(e.target.value) / 100)}/>
               </div>
             </div>
           </div>

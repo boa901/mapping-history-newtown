@@ -13,8 +13,10 @@ export default function Home() {
   } | null>();
 
   return (
-    <div className="w-full flex flex-col p-2">
-      <Map select={setSelectedHouse} />
+    <div className="w-full h-screen flex flex-col p-2">
+      <div className="flex-grow">
+        <Map select={setSelectedHouse} />
+      </div>
       <div className="flex flex-row justify-between items-center p-2 bg-gray-200/50">
         <div>
           {selectedHouse ? (

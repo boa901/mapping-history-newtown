@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import { Button, RangeSlider } from 'flowbite-react';
 
+import Drawer from '@/modules/common/components/Drawer';
 import HouseholdView from '@/modules/common/components/HouseholdView';
 
 const Map = dynamic(() => import('@/modules/map/components/Map'), { ssr: false });
@@ -24,14 +25,9 @@ export default function Home() {
   return (
     <div className="h-screen flex flex-col">
       <div className="flex-grow flex flex-row m-2">
-        <div
-          className={
-            drawerOpen ? 'flex flex-col bg-gray-200/50 border w-1/3 p-2 mr-2'
-              : 'flex flex-col bg-gray-200/50 border w-1/3 p-2 mr-2 collapse'
-          }
-        >
+        <Drawer open={drawerOpen}>
           <HouseholdView house={selectedHouse} />
-        </div>
+        </Drawer>
         <div className="flex-grow">
           <div className="w-full h-full flex flex-col">
             <div className="flex-grow">

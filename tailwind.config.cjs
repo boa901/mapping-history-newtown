@@ -4,7 +4,7 @@ module.exports = {
     "./next/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./next/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./next/modules/components/*.{js,ts,jsx,tsx,mdx}",
-    "./next/common/components/*.{js,ts,jsx,tsx,mdx}",
+    "./next/modules/common/components/*.{js,ts,jsx,tsx,mdx}",
     "node_modules/flowbite-react/lib/esm/**/*.js",
   ],
   theme: {
